@@ -1,13 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/models/cache.dart';
 import 'package:movies_app/models/theme.dart';
+import 'package:movies_app/views/forgetpassword.dart';
 import 'package:movies_app/views/login.dart';
 import 'package:movies_app/views/onboarding.dart';
 import 'package:movies_app/views/signup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Cache.init();
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
@@ -36,11 +39,14 @@ class MoviesApp extends StatelessWidget {
             theme: ThemeLight.lightTheme,
             themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            initialRoute: OnBoarding.routeName,
+            initialRoute: Cache.getEligibilty() == true
+                ? LoginView.routeName
+                : OnBoarding.routeName,
             routes: {
               OnBoarding.routeName: (context) => OnBoarding(),
               LoginView.routeName: (context) => LoginView(),
               SignUpView.routeName: (context) => SignUpView(),
+              ForgetPasswordView.routeName: (context) => ForgetPasswordView()
             },
           );
         });

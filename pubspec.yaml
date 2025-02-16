@@ -44,6 +44,7 @@ dependencies:
   flutter_material_design_icons: ^1.1.7447
   easy_localization: ^3.0.7+1
   carousel_slider: ^5.0.0
+  shared_preferences: ^2.5.2
 
 dev_dependencies:
   flutter_test:

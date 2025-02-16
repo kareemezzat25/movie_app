@@ -4,6 +4,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:movies_app/main.dart';
+import 'package:movies_app/models/cache.dart';
 import 'package:movies_app/views/login.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -110,6 +111,7 @@ class _OnBoardingScreenState extends State<OnBoarding> {
                         ElevatedButton(
                           onPressed: () {
                             if (_currentPage == onboardingData.length - 1) {
+                              Cache.saveEligibilty();
                               Navigator.pushNamed(context, LoginView.routeName);
                             } else {
                               _pageController.nextPage(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movies_app/views/forgetpassword.dart';
 import 'package:movies_app/views/signup.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -13,7 +14,9 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
           child:
@@ -31,7 +34,7 @@ class LoginView extends StatelessWidget {
                   filled: true,
                   fillColor: const Color(0xFF282A28),
                   labelText: "email".tr(),
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.email,
                     color: Colors.white,
                   ),
@@ -68,13 +71,18 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 16.h,
             ),
-            Text(
-              textAlign: TextAlign.right,
-              "forget_password".tr(),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .copyWith(fontSize: 14),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, ForgetPasswordView.routeName);
+              },
+              child: Text(
+                textAlign: TextAlign.right,
+                "forget_password".tr(),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(fontSize: 14),
+              ),
             ),
             SizedBox(
               height: 32.h,
@@ -182,8 +190,8 @@ class LoginView extends StatelessWidget {
                 inactiveBgColor: Colors.grey,
                 inactiveFgColor: Colors.white,
                 totalSwitches: 2,
-                icons: [FontAwesomeIcons.flagUsa, MdiIcons.abjadArabic],
-                activeBgColors: [
+                icons: const [FontAwesomeIcons.flagUsa, MdiIcons.abjadArabic],
+                activeBgColors: const [
                   [Colors.orange],
                   [Colors.black45]
                 ],

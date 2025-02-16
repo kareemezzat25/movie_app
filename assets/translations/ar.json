@@ -12,6 +12,8 @@
     "create_one": "أنشئ حسابًا",
     "or": "أو",
     "login_with_google": "تسجيل الدخول عبر جوجل",
+    "forget_password_title": "نسيت كلمة المرور",
+    "verify_email": "تأكيد البريد الإلكتروني",
     "avater": "الصورة الرمزية",
     "register": "تسجيل"
 }
