@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movies_app/views/signup.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class LoginView extends StatelessWidget {
@@ -28,17 +29,16 @@ class LoginView extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                   filled: true,
-                  fillColor: Color(0xFF282A28),
+                  fillColor: const Color(0xFF282A28),
                   labelText: "email".tr(),
-                  prefixIcon: ImageIcon(
-                      color: Colors.white,
-                      AssetImage(
-                        "assets/images/emailicon.png",
-                      )),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.white,
+                  ),
                   labelStyle: Theme.of(context).textTheme.titleMedium,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r),
-                      borderSide: BorderSide(width: 1)),
+                      borderSide: const BorderSide(width: 1)),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r)),
                   focusedBorder: OutlineInputBorder(
@@ -51,12 +51,12 @@ class LoginView extends StatelessWidget {
               decoration: InputDecoration(
                   labelText: "password".tr(),
                   labelStyle: Theme.of(context).textTheme.titleMedium,
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.lock,
                     color: Colors.white,
                   ),
                   filled: true,
-                  fillColor: Color(0xFF282A28),
+                  fillColor: const Color(0xFF282A28),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
                   ),
@@ -82,7 +82,7 @@ class LoginView extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 14),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
                     backgroundColor: Theme.of(context).primaryColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.r))),
@@ -96,22 +96,27 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 24.h,
             ),
-            Text.rich(
-                textAlign: TextAlign.center,
-                TextSpan(children: [
-                  TextSpan(
-                      text: "don't_have-account".tr(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleSmall!
-                          .copyWith(fontSize: 14, color: Colors.white)),
-                  TextSpan(
-                      text: "create_one".tr(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(color: Theme.of(context).primaryColor))
-                ])),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, SignUpView.routeName);
+              },
+              child: Text.rich(
+                  textAlign: TextAlign.center,
+                  TextSpan(children: [
+                    TextSpan(
+                        text: "don't_have-account".tr(),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleSmall!
+                            .copyWith(fontSize: 14, color: Colors.white)),
+                    TextSpan(
+                        text: "create_one".tr(),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(color: Theme.of(context).primaryColor))
+                  ])),
+            ),
             SizedBox(
               height: 20.h,
             ),
@@ -143,7 +148,7 @@ class LoginView extends StatelessWidget {
               height: 24.h,
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
                 color: Theme.of(context).primaryColor,
@@ -151,7 +156,7 @@ class LoginView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ImageIcon(AssetImage("assets/images/icon_google.png")),
+                  const ImageIcon(AssetImage("assets/images/icon_google.png")),
                   SizedBox(
                     width: 8.w,
                   ),
@@ -184,9 +189,9 @@ class LoginView extends StatelessWidget {
                 ],
                 onToggle: (index) {
                   if (index == 1) {
-                    context.setLocale(Locale("ar"));
+                    context.setLocale(const Locale("ar"));
                   } else {
-                    context.setLocale(Locale("en"));
+                    context.setLocale(const Locale("en"));
                   }
                 },
               ),

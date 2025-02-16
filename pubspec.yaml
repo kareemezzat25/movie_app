@@ -43,6 +43,7 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   flutter_material_design_icons: ^1.1.7447
   easy_localization: ^3.0.7+1
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

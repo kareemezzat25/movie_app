@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/theme.dart';
 import 'package:movies_app/views/login.dart';
 import 'package:movies_app/views/onboarding.dart';
+import 'package:movies_app/views/signup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +39,8 @@ class MoviesApp extends StatelessWidget {
             initialRoute: OnBoarding.routeName,
             routes: {
               OnBoarding.routeName: (context) => OnBoarding(),
-              LoginView.routeName: (context) => LoginView()
+              LoginView.routeName: (context) => LoginView(),
+              SignUpView.routeName: (context) => SignUpView(),
             },
           );
         });
