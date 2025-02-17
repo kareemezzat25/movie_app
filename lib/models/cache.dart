@@ -15,4 +15,16 @@ class Cache {
   static bool? getEligibilty() {
     return prefs.getBool("OnBoarding");
   }
+
+  static void setToken(String token) {
+    prefs.setString("auth_token", token);
+  }
+
+  static String? getToken() {
+    return prefs.getString("auth_token");
+  }
+
+  static void removeToken() {
+    prefs.remove("auth_token");
+  }
 }

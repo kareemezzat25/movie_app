@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/cache.dart';
 import 'package:movies_app/models/theme.dart';
 import 'package:movies_app/views/forgetpassword.dart';
+import 'package:movies_app/views/home.dart';
 import 'package:movies_app/views/login.dart';
 import 'package:movies_app/views/onboarding.dart';
+import 'package:movies_app/views/reset_password_profile.dart';
 import 'package:movies_app/views/signup.dart';
+import 'package:movies_app/views/updateprofile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +49,10 @@ class MoviesApp extends StatelessWidget {
               OnBoarding.routeName: (context) => OnBoarding(),
               LoginView.routeName: (context) => LoginView(),
               SignUpView.routeName: (context) => SignUpView(),
-              ForgetPasswordView.routeName: (context) => ForgetPasswordView()
+              ForgetPasswordView.routeName: (context) => ForgetPasswordView(),
+              Home.routeName: (context) => Home(),
+              UpdateProfile.routeName: (context) => UpdateProfile(),
+              ResetPassword.routeName: (context) => ResetPassword()
             },
           );
         });
