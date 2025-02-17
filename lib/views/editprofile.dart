@@ -4,16 +4,17 @@ import 'package:movies_app/models/cache.dart';
 import 'package:movies_app/models/userservice.dart';
 import 'package:movies_app/views/login.dart';
 import 'package:movies_app/views/reset_password_profile.dart';
+import 'package:movies_app/views/update_profile.dart';
 
-class UpdateProfile extends StatefulWidget {
-  static const String routeName = "Updateprofile";
-  const UpdateProfile({super.key});
+class EditProfile extends StatefulWidget {
+  static const String routeName = "Editprofile";
+  const EditProfile({super.key});
 
   @override
-  UpdateProfileState createState() => UpdateProfileState();
+  EditProfileState createState() => EditProfileState();
 }
 
-class UpdateProfileState extends State<UpdateProfile> {
+class EditProfileState extends State<EditProfile> {
   String name = '';
   String phone = '';
   String avatarPath = 'assets/images/gamer1.png';
@@ -163,7 +164,11 @@ class UpdateProfileState extends State<UpdateProfile> {
                   ),
                   SizedBox(height: 18.h),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await Navigator.pushNamed(
+                          context, UpdateProfile.routeName);
+                      fetchProfile();
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       minimumSize: Size(398.w, 56.h),

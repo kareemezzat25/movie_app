@@ -9,7 +9,8 @@ import 'package:movies_app/views/login.dart';
 import 'package:movies_app/views/onboarding.dart';
 import 'package:movies_app/views/reset_password_profile.dart';
 import 'package:movies_app/views/signup.dart';
-import 'package:movies_app/views/updateprofile.dart';
+import 'package:movies_app/views/editprofile.dart';
+import 'package:movies_app/views/update_profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +52,7 @@ class MoviesApp extends StatelessWidget {
               SignUpView.routeName: (context) => SignUpView(),
               ForgetPasswordView.routeName: (context) => ForgetPasswordView(),
               Home.routeName: (context) => Home(),
+              EditProfile.routeName: (context) => EditProfile(),
               UpdateProfile.routeName: (context) => UpdateProfile(),
               ResetPassword.routeName: (context) => ResetPassword()
             },

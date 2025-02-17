@@ -22,6 +22,24 @@ class UserService {
     }
   }
 
+  Future<Map<String, dynamic>> updateUserProfile(
+      Map<String, dynamic> data) async {
+    final response = await http.patch(
+      Uri.parse("$baseUrl/profile"), // Replace with actual API URL
+      headers: {
+        "Authorization": "Bearer $token",
+        "Content-Type": "application/json",
+      },
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception("Failed to update profile");
+    }
+  }
+
   Future<void> deleteAccount() async {
     final response = await http.delete(
       Uri.parse('$baseUrl/profile'),

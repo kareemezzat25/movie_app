@@ -89,9 +89,12 @@ class _SignUpViewState extends State<SignUpView> {
                       return Builder(
                         builder: (BuildContext context) {
                           return CircleAvatar(
-                            radius: 150,
-                            backgroundImage: AssetImage(
+                            radius: 150.r,
+                            child: Image.asset(
                               i,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.fill,
                             ),
                           );
                         },
