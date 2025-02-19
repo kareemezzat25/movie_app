@@ -25,7 +25,7 @@ class UserService {
   Future<Map<String, dynamic>> updateUserProfile(
       Map<String, dynamic> data) async {
     final response = await http.patch(
-      Uri.parse("$baseUrl/profile"), // Replace with actual API URL
+      Uri.parse("$baseUrl/profile"),
       headers: {
         "Authorization": "Bearer $token",
         "Content-Type": "application/json",
