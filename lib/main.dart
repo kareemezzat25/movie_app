@@ -8,6 +8,7 @@ import 'package:movies_app/views/home.dart';
 import 'package:movies_app/views/login.dart';
 import 'package:movies_app/views/onboarding.dart';
 import 'package:movies_app/views/reset_password_profile.dart';
+import 'package:movies_app/views/seemoreview.dart';
 import 'package:movies_app/views/signup.dart';
 import 'package:movies_app/views/editprofile.dart';
 import 'package:movies_app/views/update_profile.dart';
@@ -17,11 +18,11 @@ void main() async {
   Cache.init();
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
-      supportedLocales: [Locale('en'), Locale('ar')],
+      supportedLocales: [const Locale('en'), const Locale('ar')],
       path:
           'assets/translations', // <-- change the path of the translation files
-      fallbackLocale: Locale('en'),
-      child: MoviesApp()));
+      fallbackLocale: const Locale('en'),
+      child: const MoviesApp()));
 }
 
 class MoviesApp extends StatelessWidget {
@@ -50,11 +51,13 @@ class MoviesApp extends StatelessWidget {
               OnBoarding.routeName: (context) => OnBoarding(),
               LoginView.routeName: (context) => LoginView(),
               SignUpView.routeName: (context) => SignUpView(),
-              ForgetPasswordView.routeName: (context) => ForgetPasswordView(),
+              ForgetPasswordView.routeName: (context) =>
+                  const ForgetPasswordView(),
               Home.routeName: (context) => Home(),
-              EditProfile.routeName: (context) => EditProfile(),
+              EditProfile.routeName: (context) => const EditProfile(),
               UpdateProfile.routeName: (context) => UpdateProfile(),
-              ResetPassword.routeName: (context) => ResetPassword()
+              ResetPassword.routeName: (context) => ResetPassword(),
+              SeeMoreView.routeName: (context) => SeeMoreView()
             },
           );
         });

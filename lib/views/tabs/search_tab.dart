@@ -98,7 +98,7 @@ class _SearchTabState extends State<SearchTab> {
                                   movie["vote_average"]?.toString() ?? "N/A";
 
                               return ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(16.r),
                                 child: Stack(
                                   children: [
                                     if (posterPath == null) ...[
@@ -114,26 +114,26 @@ class _SearchTabState extends State<SearchTab> {
                                       left: 8,
                                       child: Container(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 20, vertical: 8),
+                                            horizontal: 8, vertical: 12),
                                         decoration: BoxDecoration(
-                                          color: Colors.black54,
+                                          color: Color(0xFF121312),
                                           borderRadius:
-                                              BorderRadius.circular(16.r),
+                                              BorderRadius.circular(10.r),
                                         ),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            Icon(Icons.star,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: 14),
-                                            SizedBox(width: 4.w),
                                             Text(rating,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .titleSmall!
                                                     .copyWith(
                                                         color: Colors.white)),
+                                            SizedBox(width: 4.w),
+                                            Icon(Icons.star,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 14),
                                           ],
                                         ),
                                       ),
