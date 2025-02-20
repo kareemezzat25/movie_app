@@ -103,6 +103,9 @@ class _HomeTabState extends State<HomeTab> {
                     );
                   }).toList(),
                 ),
+              SizedBox(
+                height: 24.h,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -125,6 +128,7 @@ class _HomeTabState extends State<HomeTab> {
                         Icon(
                           Icons.arrow_forward,
                           color: Theme.of(context).primaryColor,
+                          size: 12,
                         )
                       ],
                     ),
@@ -135,17 +139,63 @@ class _HomeTabState extends State<HomeTab> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: actionMovies.map((movie) {
+                    final posterPath = movie['poster_path'];
+                    final posterUrl = posterPath != null
+                        ? 'https://image.tmdb.org/t/p/w200$posterPath'
+                        : "assets/images/placeholder.jpg";
+                    final rating = movie["vote_average"]?.toString() ?? "N/A";
+
                     return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: movie['poster_path'] != null
-                            ? Image.network(
-                                'https://image.tmdb.org/t/p/w200${movie['poster_path']}',
-                                fit: BoxFit.cover,
-                              )
-                            : Image.asset(
-                                "assets/images/placeholder.jpg",
-                                fit: BoxFit.cover,
-                              ));
+                      padding: const EdgeInsets.all(8.0),
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: posterPath != null
+                                ? Image.network(
+                                    posterUrl,
+                                    width: 146.w,
+                                    height: 300.h,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(
+                                    "assets/images/placeholder.jpg",
+                                    width: 146.w,
+                                    height: 300.h,
+                                    fit: BoxFit.cover,
+                                  ),
+                          ),
+                          Positioned(
+                            top: 8,
+                            left: 8,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 6, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: Color(0xFF121312),
+                                borderRadius: BorderRadius.circular(20.r),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    rating,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(color: Colors.white),
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Icon(Icons.star,
+                                      color: Theme.of(context).primaryColor,
+                                      size: 12),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   }).toList(),
                 ),
               ),

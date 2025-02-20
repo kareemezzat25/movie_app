@@ -22,6 +22,12 @@ class _SignUpViewState extends State<SignUpView> {
     "assets/images/gamer1.png",
     "assets/images/gamer2.png",
     "assets/images/gamer3.png",
+    "assets/images/gamer4.png",
+    "assets/images/gamer5.png",
+    "assets/images/gamer6.png",
+    "assets/images/gamer7.png",
+    "assets/images/gamer8.png",
+    "assets/images/gamer9.png",
   ];
 
   Color textFieldColor = const Color(0xFF282A28);
@@ -53,9 +59,10 @@ class _SignUpViewState extends State<SignUpView> {
         phone: phoneController.text.startsWith("+")
             ? phoneController.text
             : "+2${phoneController.text}",
-        avatarId: 1,
+        avatarId: selectedAvatarId,
       );
-      Navigator.pushNamed(context, Home.routeName);
+      Navigator.pushNamedAndRemoveUntil(
+          context, LoginView.routeName, (route) => false);
     } catch (e) {
       print("error in Singup:$e");
     }
@@ -84,20 +91,30 @@ class _SignUpViewState extends State<SignUpView> {
                       enlargeFactor: 0.3,
                       enlargeCenterPage: true,
                       scrollDirection: Axis.horizontal,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          selectedAvatarId = index + 1;
+                        });
+                      },
                     ),
-                    items: imagesAvater.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return CircleAvatar(
-                            radius: 150.r,
-                            child: Image.asset(
-                              i,
-                              width: double.infinity,
-                              height: double.infinity,
-                              fit: BoxFit.fill,
-                            ),
-                          );
+                    items: imagesAvater.asMap().entries.map((entry) {
+                      int index = entry.key;
+                      String imagePath = entry.value;
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedAvatarId = index + 1;
+                          });
                         },
+                        child: CircleAvatar(
+                          radius: 150.r,
+                          child: Image.asset(
+                            imagePath,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       );
                     }).toList(),
                   ),
